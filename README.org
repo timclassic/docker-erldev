@@ -1,0 +1,26 @@
+* Erlang Development Environment in Docker
+  This repository builds a Docker container hosting Erlang plus a
+  set of libraries.  It is experimental in nature.
+
+** Run It
+   Assuming you have Docker installed, you may try out this image
+   immediately:
+   #+BEGIN_SRC sh
+     docker run -it --rm stoo/erlang-dev erl
+   #+END_SRC
+
+** Build It
+   Run the following to create the images:
+   #+BEGIN_SRC sh
+     make
+   #+END_SRC
+
+   If you want the new image to be tagged as "latest", run make as
+   follows:
+   #+BEGIN_SRC sh
+     make latest
+   #+END_SRC
+
+** Dependencies
+   - GNU Make
+   - Docker
