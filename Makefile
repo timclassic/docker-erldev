@@ -4,8 +4,8 @@ define sshid
 echo "Looking for RSA key" \
     && test -f ~/.ssh/id_rsa \
     && cp -p ~/.ssh/id_rsa sshid \
-    || echo "RSA key not found, trying DSA" \
-    && cp -p ~/.ssh/id_dsa sshid
+    || ( echo "RSA key not found, trying DSA" \
+         && cp -p ~/.ssh/id_dsa sshid )
 endef
 
 
