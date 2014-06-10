@@ -1,3 +1,6 @@
+VSN = 0.1.0
+IMG = stoo/erlang-dev:$(VSN)
+
 .PHONY: all build image ssh-id
 
 define sshid
@@ -13,10 +16,5 @@ all: image
 
 image:
 	$(sshid)
-	docker build -t "stoo/erlang-dev:0.1.0" .
-	rm -f sshid
-
-latest: image
-	$(sshid)
-	docker build -t "stoo/erlang-dev:latest" .
+	docker build -t "$(IMG)" .
 	rm -f sshid

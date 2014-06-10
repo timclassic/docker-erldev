@@ -1,4 +1,4 @@
-FROM stoo/erlang
+FROM stoo/erlang:17.0-2
 
 # Install additional packages
 RUN apt-get install -y build-essential
@@ -31,7 +31,6 @@ RUN chmod 0600 sshid
 USER devdock
 ENV HOME /devdock
 
-
 # Populate standard Erlang libs
 ENV ERL_LIBS /devdock/erl-libs
 RUN mkdir -p erl-libs
@@ -41,10 +40,15 @@ RUN repo sync
 
 RUN make -sf build/apps.mk
 
-# Set starting working directory
+# Create some directories and add local bin/ directory to PATH
 WORKDIR /devdock
 RUN mkdir work
+RUN mkdir bin
+RUN ln -s ../erl-libs/relx/relx bin/relx
+RUN ln -s ../erl-libs/rebar/rebar bin/rebar
+ENV PATH $PATH:/devdock/bin
+
+# Set starting working directory
 WORKDIR work
 
-VOLUME ["/devdock"]
 CMD ["/bin/bash"]
