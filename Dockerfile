@@ -1,4 +1,4 @@
-FROM stoo/erlang:17.0-2
+FROM stoo/erlang:17.1-1
 
 # Install additional packages
 RUN apt-get install -y build-essential

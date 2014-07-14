@@ -1,4 +1,4 @@
-VSN = 0.1.0
+VSN = 0.1.1
 IMG = stoo/erlang-dev:$(VSN)
 
 .PHONY: all build image ssh-id
